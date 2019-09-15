@@ -50,12 +50,20 @@ def nlp():
                     _hints.append({ 'ent': ent, 'prompt': 'an address' })
                     _added.append(ent.text)
 
-        return render_template('witness_statement.html', statement_text=_spacy_html, hints=_hints)
-    return render_template('witness_statement.html')
+        return render_template('witness_statement.html', statement_text=_spacy_html, hints=_hints, next='/give-statement/advokate')
+    return render_template('witness_statement.html', next='/give-statement/advokate')
+
+@app.route('/give-statement/advokate')
+def advokate():
+    return render_template('witness_advokate.html', next='/give-statement/summary')
 
 @app.route('/give-statement/summary')
 def summary():
-    return render_template('witness_summary.html')
+    return render_template('witness_summary.html', next='/give-statement/done')
+
+@app.route('/give-statement/done')
+def done():
+    return render_template('witness_done.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=4000)
