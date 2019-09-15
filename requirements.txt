@@ -3,3 +3,5 @@ en-core-web-lg
 en-core-web-sm
 flask
 jinja2
+networkx
+matplotlib

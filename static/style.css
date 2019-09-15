@@ -1,0 +1,159 @@
+:root {
+  --c1: rgba(2, 11, 34, 1);
+  --c2: rgba(239, 232, 158, 1);
+  --c3: rgba(47, 48, 97, 1);
+  --c4: rgba(255, 230, 109, 1);
+  --c5: rgba(247, 247, 242, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 2em;
+  display: block;
+}
+
+h1, h2 {
+  display: block;
+  border-bottom: 2px solid var(--c4);
+  padding: 10px;
+  margin: 0 0 1em 0;
+}
+
+h2, h3, h4 {
+  padding: 10px;
+}
+
+a:link, a:visited, a:active {
+  text-decoration: none;
+  color: var(--c3);
+}
+
+a:hover {
+  border-bottom: 2px solid var(--c3);
+}
+
+ul#breadcrumbs {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--c1);
+  color: var(--c5);
+}
+
+ul#breadcrumbs li {
+  display: inline-block;
+  padding: 1em;
+  margin: 0;
+  border-right: 1px solid var(--c3);
+}
+
+#breadcrumbs a:link, 
+#breadcrumbs a:visited, 
+#breadcrumbs a:active {
+  text-decoration: none;
+  color: var(--c2);
+}
+
+#breadcrumbs a:hover {
+  border-bottom: 2px solid var(--c2);
+}
+
+ul.related {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul.related li {
+  margin: 5px;
+}
+
+.related a:link, 
+.related a:visited, 
+.related a:active {
+  display: block;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--c2);
+  background-color: var(--c3);
+  border-radius: 5px;
+}
+
+.related a:hover {
+  color: var(--c5);
+  border: 0;
+}
+
+.logo {
+  float: right;
+  font-weight: bold;
+  font-variant: small-caps;
+  border-top: 3px solid var(--c5);
+  border-bottom: 3px solid var(--c5);
+  color: var(--c5);
+  size: 2em;
+  margin: 0.8em;
+}
+
+table {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  border-collapse: collapse;
+}
+
+tbody {
+  display: contents;
+}
+
+tr {
+  display: contents;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #f0f0f0;
+  margin: 5px;
+}
+
+th {
+  background-color: #f0f0f0;
+  text-align: right;
+  margin-right: 0;
+}
+
+td {
+  margin-left: 0;
+}
+
+.entities {
+  padding: 2em;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.menu {
+  width: 100%;
+}
+
+#container {
+  max-width: 100%;
+  height: 400px;
+  margin: auto;
+  margin-bottom: 100px;
+}

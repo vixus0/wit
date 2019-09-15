@@ -1,10 +1,17 @@
+{% include "head.html" %}
+<main>
 <h1>{{ person['fullName'] }}</h1>
-Appears in these statements:
-<ul>
+<table>
+  {% for key, value in person.items() %}
+  <tr><th>{{ key }}</th><td>{{ value }}</td></tr>
+  {% endfor %}
+</table>
+<h3>Appears in these statements:</h3>
+<ul class="related">
   {% for st, statement in statements.items() %}
   <li><a href="/statement/{{ st }}">{{ statement.user_data['title'].replace('-', ' ').title() }}</a></li>
   {% else %}
   <li>This person does not appear in any statements</li>
   {% endfor %}
 </ul>
-
+</main>

@@ -9,6 +9,7 @@ from nlp import process
 
 data_dir = 'clue/data'
 statements_dir = 'statements'
+
 person_data = {}
 statement_data = {}
 
@@ -34,3 +35,5 @@ for fn in glob(os.path.join(statements_dir, 'statement-*.txt')):
         if person:
             persons_statements[person_key].append(statement_key)
             statements_persons[statement_key].append(person_key)
+
+person_data = { id:person for id, person in person_data.items() if id in persons_statements.keys() }

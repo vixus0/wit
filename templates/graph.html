@@ -1,0 +1,13 @@
+<div id="container" class="menu">
+  <h1>Relationships</h1>
+</div>
+<script src="{{ url_for('static', filename='sigma.min.js') }}"></script>
+<script src="{{ url_for('static', filename='sigma.parsers.json.min.js') }}"></script>
+<script>
+  sigma.parsers.json("{{ url_for('static', filename='data.json') }}", {
+    container: 'container',
+    settings: {
+      defaultNodeColor: '#ec5148'
+    }
+  });
+</script>
