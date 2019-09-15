@@ -1,0 +1,67 @@
+{% include "head.html" %}
+<main class="statement">
+<h1>Personal information</h1>
+<p class="guidance">
+You will need to provide some details in the event that you are contacted in relation to the investigation or trial.
+</p>
+
+<p class="guidance">
+Please fill in all fields marked (*)
+</p>
+
+<form class="statement" action="{{ next }}" method="GET">
+  <label for=name>Full name</label>
+  <input type="text" id="name" name="fullname">
+
+  <label for=address>Address</label>
+  <input type="textarea" id="address">
+
+  <label for=homephone>Home phone number</label>
+  <input type="text" id="homephone">
+
+  <label for=workphone>Work phone number</label>
+  <input type="text" id="workphone">
+
+  <label for=mobphone>Mobile phone number</label>
+  <input type="text" id="mobphone">
+
+  <label for=email>Email address</label>
+  <input type="text" id="email">
+
+  <label for=contact>Preferred means of contact</label>
+  <select id=contact>
+    <option>Mobile phone</option>
+    <option>Email</option>
+    <option>Home phone</option>
+    <option>Work phone</option>
+  </select>
+
+  <label for=gender>Gender</label>
+  <select id=gender>
+    <option>Female</option>
+    <option>Male</option>
+    <option>Other</option>
+  </select>
+
+  <label for=ethnicity>Ethnicity</label>
+  <select id=ethnicity>
+    <option value="A1">A1 Indian</option>
+    <option value="A2">A2 Pakistani</option>
+    <option value="A3">A3 Bangladeshi</option>
+    <option value="A9">A9 Any other Asian background</option>
+    <option value="B1">B1 Caribbean</option>
+    <option value="B2">B2 African</option>
+    <option value="B9">B9 Any other Black background</option>
+    <option value="M1">M1 White and Black Caribbean</option>
+    <option value="M2">M2 White and Black African</option>
+    <option value="M3">M3 White and Asian</option>
+    <option value="O1">O1 Chinese</option>
+    <option value="O2">O2 Any other ethnig group</option>
+    <option value="W1">W1 British</option>
+    <option value="W2">W2 Irish</option>
+    <option value="W9">W9 Any other White background</option>
+  </select>
+
+  <button type=submit>Continue</button>
+</form>
+</main>

@@ -1,0 +1,25 @@
+{% include "head.html" %}
+<main class=statement>
+  <h1>Witness care</h1>
+  <p class=guidance>
+  You may be requested to attend court. Please tell us if you have any issues or requirements.
+  </p>
+  <form class=statement action="{{ next }}" method="GET">
+    <label>Are you willing to attend court?</label>
+    <select>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <label>If not willing to attend court, please give the reason</label>
+    <input type="text" name="homeadress">
+
+    <label>What can be done to ensure attendance?</label>
+    <input type="text" name="homeadress">
+
+    <label>Do you have any particular needs, such as, but not limited to, healthcare, disability, childcare, transport disability, language difficulties, visually impaired, restricted mobility, or other concenrns?</label>
+    <input type="text" name="homeadress">
+
+    <button type=submit>Continue</button>
+  </form>
+</main>

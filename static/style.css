@@ -57,7 +57,18 @@ ul#breadcrumbs li {
   display: inline-block;
   padding: 1em;
   margin: 0;
-  border-right: 1px solid var(--c3);
+}
+
+ul#breadcrumbs li:before {
+  content: '➤';
+  color: var(--c3);
+  font-weight: bold;
+  margin: 0 1em 0 -1em;
+}
+
+ul#breadcrumbs li:first-child:before {
+  content: '';
+  margin: 0;
 }
 
 #breadcrumbs a:link, 
@@ -225,4 +236,75 @@ main.centre {
   border-radius: 10px;
   font-size: 25px;
   width: 70%;
+}
+
+main.statement {
+  width: 50%;
+  margin: auto;
+}
+
+form.statement {
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+form.statement label {
+  display: block;
+  background-color: var(--c1);
+  color: var(--c5);
+  padding: 10px;
+  border: none;
+  border-radius: 5px 5px 0 0;
+  font-size: 0.8em;
+}
+
+form.statement input,
+form.statement select {
+  display: block;
+  background-color: var(--c2);
+  color: var(--c1);
+  padding: 10px;
+  border: none;
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+form.statement button {
+  font-family: sans-serif;
+  background-color: var(--c3);
+  color: var(--c5);
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2em;
+  padding: 8px;
+}
+
+.guidance {
+  font-size: 1.2em;
+  line-height: 120%;
+  padding: 10px;
+}
+
+.important {
+  position: relative;
+  background-color: var(--c4);
+  font-weight: bold;
+}
+
+.important:before {
+  display: block;
+  float: left;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  content: '!';
+  font-weight: bold;
+  font-size: 5em;
+  background-color: var(--c1);
+  color: var(--c4);
+  text-align: center;
+  overflow: hidden;
+  margin: 0 10px 30px 0;
 }

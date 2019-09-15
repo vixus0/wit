@@ -1,0 +1,23 @@
+{% include "head.html" %}
+<main class="statement">
+<h1>Give a witness statement</h1>
+<p class="guidance">
+This short form will take you step-by-step in the process of completing a statement.
+The process should not take you more than 10 minutes.
+Before you start, please ensure you take a moment to read the following leaflet:
+<a href="https://www.gov.uk/government/publications/the-new-leaflet-giving-a-witness-statement-to-the-police-what-happens-next">Giving a witness statement to the police</a>.
+</p>
+
+<p class="guidance important">
+You MUST ensure that all your replies in this statement are true to the best of your knowledge and belief.
+If tendered in evidence, you shall be liable to prosecution if you have wilfully stated anything in this statement, which you know to be false, or do not believe to be true.
+</p>
+
+<p class="guidance">
+If you are ready to continue, click the button below.
+</p>
+
+<form class="statement" action="{{ next }}" method="GET">
+  <button type=submit>Continue</button>
+</form>
+</main>
