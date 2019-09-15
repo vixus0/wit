@@ -275,7 +275,9 @@ form.statement select {
   margin-bottom: 20px;
 }
 
-form.statement button {
+form.statement button,
+a.button:link, a.button:active, a.button:visited {
+  display: inline-block;
   font-family: sans-serif;
   background-color: var(--c3);
   color: var(--c5);
