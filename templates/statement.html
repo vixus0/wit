@@ -1,0 +1,20 @@
+<div>
+{{ ents|safe }}
+</div>
+
+<script>
+  var persons = [
+    {% for person in persons %}
+    "{{ person['fullName'].lower() }}",
+    {% endfor %}
+  ]
+
+  Array.from(document.getElementsByClassName('entity')).forEach((el) => { 
+    html = el.innerHTML
+    persons.forEach((person) => {
+      if (el.textContent.toLowerCase().includes(person)) {
+        el.innerHTML = "<a href=\"/person/" + person.replace(' ', '-') + "\">" + html + "</a>"
+      }
+    })  
+  })
+</script>
