@@ -152,7 +152,7 @@ td {
 }
 
 .entities {
-  padding: 2em;
+  padding: 10px;
 }
 
 .top {
@@ -243,6 +243,10 @@ main.statement {
   margin: auto;
 }
 
+main.statement.wide {
+  width: 70%;
+}
+
 form.statement {
   padding: 10px;
   font-size: 1.2em;
@@ -307,4 +311,18 @@ form.statement button {
   text-align: center;
   overflow: hidden;
   margin: 0 10px 30px 0;
+}
+
+.editable {
+  background-color: #f0f0f0;
+  color: var(--c1);
+  border-radius: 5px;
+  min-height: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+  line-height: 2.5;
+}
+
+.hints li {
+  margin-bottom: 20px;
 }
