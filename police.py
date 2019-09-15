@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from data import person_data, statement_data, persons_statements, statements_persons
 from network import generate_json
 
@@ -33,3 +35,6 @@ def statement(id):
     _statement.user_data['title'] = _statement.user_data['title'].replace('-', ' ').title()
     _spacy_html = displacy.render(_statement, style='ent', minify=True)
     return render_template('statement.html', statement=_statement, ents=_spacy_html, persons=_persons)
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000)

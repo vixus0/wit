@@ -1,5 +1,4 @@
-<title>Wit</title>
-<link rel=stylesheet href={{ url_for('static', filename='style.css') }}>
+{% include "pre.html" %}
 <ul id="breadcrumbs">
   <li><a href="/">Home</a></li>
   {% for el in request.path.split('/')[1:] %}

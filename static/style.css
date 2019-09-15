@@ -14,6 +14,9 @@ body {
   font-family: sans-serif;
   padding: 0;
   margin: 0;
+  height: 100%;
+  min-height: 100%;
+  color: var(--c1);
 }
 
 main {
@@ -104,7 +107,6 @@ ul.related li {
   border-top: 3px solid var(--c5);
   border-bottom: 3px solid var(--c5);
   color: var(--c5);
-  size: 2em;
   margin: 0.8em;
 }
 
@@ -156,4 +158,71 @@ td {
   height: 400px;
   margin: auto;
   margin-bottom: 100px;
+}
+
+main.centre {
+  height: 100%;
+  min-height: 100%;
+  display: grid;
+  align-items: center;
+  background-color: var(--c3);
+}
+
+.splash {
+  width: 30%;
+  margin: auto;
+  padding: 40px;
+  background-color: var(--c1);
+  border-radius: 20px;
+  color: var(--c5);
+  text-align: center;
+}
+
+.splash h1 {
+  display: inline-block;
+  clear: both;
+  font-size: 60px;
+  font-weight: bold;
+  font-variant: small-caps;
+  border-top: 8px solid var(--c5);
+  border-bottom: 8px solid var(--c5);
+  color: var(--c5);
+  padding: 0;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.splash p,
+.splash label,
+.splash input {
+  display: block;
+  padding: 10px;
+  margin: auto;
+}
+
+.splash p {
+  text-align: left;
+  width: 70%;
+}
+
+.splash label {
+  text-align: left;
+  margin-bottom: 10px;
+  width: 70%;
+}
+
+.splash input {
+  background-color: var(--c5);
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 70%;
+}
+
+.splash button {
+  background-color: var(--c2);
+  border: none;
+  border-radius: 10px;
+  font-size: 25px;
+  width: 70%;
 }
