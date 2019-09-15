@@ -265,7 +265,7 @@ form.statement label {
 form.statement input,
 form.statement select {
   display: block;
-  background-color: var(--c2);
+  background-color: #f0f0f0;
   color: var(--c1);
   padding: 10px;
   border: none;
@@ -321,6 +321,10 @@ form.statement button {
   margin-bottom: 20px;
   padding: 10px;
   line-height: 2.5;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .hints li {

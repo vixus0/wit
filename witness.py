@@ -36,18 +36,29 @@ def consent():
 @app.route('/give-statement/statement', methods=['GET', 'POST'])
 def nlp():
     if request.method == 'POST':
-        _statement = process_text(request.form['statement'])
-        _spacy_html = displacy.render(_statement, style='ent', minify=True)
-        _hints = []
+        if request.form['submit'] == 'check':
+            _statement = process_text(request.form['statement'])
+            _spacy_html = displacy.render(_statement, style='ent', minify=True)
+            _hints = []
+            _added = []
 
-        for ent in _statement.ents:
-            if ent.label_ == 'VEHICLE':
-                _hints.append({ 'ent': ent, 'prompt': 'more detail' })
-            elif ent.label_ == 'PLACE':
-                _hints.append({ 'ent': ent, 'prompt': 'an address' })
+            for ent in _statement.ents:
+                if ent.text not in _added:
+                    if ent.label_ == 'VEHICLE':
+                        _hints.append({ 'ent': ent, 'prompt': 'more detail' })
+                        _added.append(ent.text)
+                    elif ent.label_ == 'PLACE':
+                        _hints.append({ 'ent': ent, 'prompt': 'an address' })
+                        _added.append(ent.text)
 
-        return render_template('witness_statement.html', statement_text=_spacy_html, hints=_hints)
+            return render_template('witness_statement.html', statement_text=_spacy_html, hints=_hints)
+        elif request.form['submit'] == 'confirm':
+            return redirect('/give-statement/summary', code=200)
     return render_template('witness_statement.html')
+
+@app.route('/give-statement/summary')
+def summary():
+    return render_template('witness_summary.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=4000)
