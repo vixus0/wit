@@ -35,3 +35,14 @@ Potentially, we could automatically construct a timeline based on the informatio
 - The backend applications `witness.py` and `police.py` are written in Python/[Flask](https://flask.pocoo.org)
 - The NLP was performed using [spaCy](https://spacy.io)
 - The graph on the police panel was drawn using [sigma.js](https://sigmajs.org)
+
+## How to run
+
+```
+# Once you have virtualenv installed
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+./witness.py &
+./police.py &
+```
