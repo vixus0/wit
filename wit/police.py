@@ -1,5 +1,21 @@
-from flask import request
-from wit import app
+#!/usr/bin/env python
+
+from flask import render_template, request
+from spacy import displacy
+
+generate_json()
+
+env = Environment(
+        loader = FileSystemLoader('templates'),
+        autoescape = select_autoescape(['html', 'css'])
+        )
+
+app = Flask(__name__)
+
+@app.route('/cases', methods=['GET', 'POST'], defaults={'id': None})
+@app.route('/cases/<uuid:id>', methods=['GET'])
+def index(id):
+    return render_template('cases.html', persons=_persons, statements=_statements)
 
 @app.route('/witnesses', methods=['GET', 'POST'], defaults={'id': None})
 @app.route('/witnesses/<uuid:id>', methods=['GET'])
@@ -23,7 +39,7 @@ def statements(id):
     elif request.method == 'POST':
         return 'post it brew'
 
-@app.route('/codes', methods=['GET', 'POST'])
+@app.route('/cases/<uuid:id>/codes', method=['GET', 'POST'])
 def codes():
     '''List codes or generate a new one'''
     if request.method == 'GET':

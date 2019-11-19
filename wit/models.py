@@ -3,6 +3,7 @@ from uuid import uuid4
 from peewee import (
         Model,
         BlobField,
+        BooleanField,
         CharField,
         DateField,
         DateTimeField,
@@ -25,7 +26,21 @@ class BaseModel(Model):
         database = db
     id = UUIDField(primary_key=True, default=uuid4)
 
+#
+# Case -> Witness -> Code -> Statement
+#
+class User(Model):
+    username = CharField()
+    password = CharField()
+
+class Case(Model):
+    opened = DateTimeField(default=datetime.now)
+    closed = DateTimeField(null=True)
+    name = CharField(index=True)
+    created_by = ForeignKeyField(User, backref='cases')
+
 class Witness(BaseModel):
+    case = ForeignKeyField(Case, backref='witnesses')
     name = CharField(index=True)
     birthdate = DateField()
     address = TextField()
@@ -39,7 +54,8 @@ class Code(BaseModel):
     used = DateTimeField(null=True)
 
 class Statement(BaseModel):
-    witness = ForeignKeyField(Witness, backref='statements')
+    code = ForeignKeyField(Code, backref='statements')
     submitted = DateTimeField(default=datetime.now, index=True)
     text = TextField()
     spacy_doc = BlobField()
+    supervised = BooleanField()
