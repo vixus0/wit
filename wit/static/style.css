@@ -112,7 +112,7 @@ ul.related li {
 }
 
 .logo {
-  float: right;
+  float: left;
   font-weight: bold;
   font-variant: small-caps;
   border-top: 3px solid var(--c5);
@@ -189,6 +189,12 @@ main.centre {
   text-align: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .splash {
+    width: 100%;
+  }
+}
+
 .splash h1 {
   display: inline-block;
   clear: both;
@@ -245,6 +251,13 @@ main.statement {
 
 main.statement.wide {
   width: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+  main.statement,
+  main.statement.wide {
+    width: 100%;
+  }
 }
 
 form.statement {

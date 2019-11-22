@@ -1,10 +1,9 @@
 {% include "pre.html" %}
 <ul id="breadcrumbs">
-  <li><a href="/">Home</a></li>
+  <a href="/" class="logo">Wit</a>
   {% for el in request.path.split('/')[1:] %}
   {% if el != '' %}
   <li>{{ el.replace('-', ' ').title() }}</li>
   {% endif %}
   {% endfor %}
-  <div class="logo">Wit</div>
 </ul>
