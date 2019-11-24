@@ -1,3 +1,5 @@
 static/data.json
 venv
 *.pyc
+*.db
+testdata/

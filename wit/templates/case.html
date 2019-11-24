@@ -1,0 +1,9 @@
+{% include "head.html" %}
+<main>
+  <ul class="grid mini">
+    <li><a href="{{ url_for('case', id=case.id) }}" class="selected">🌐 Graph</a></li>
+    <li><a href="{{ url_for('witnesses', case_id=case.id) }}">👀 Witnesses</a></li>
+    <li><a href="">💬 Statements</a></li>
+    <li><a href="">📋 Notes</a></li>
+  </ul>
+</main>

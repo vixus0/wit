@@ -37,4 +37,4 @@ with db:
     statement2 = Statement.create(code=code1, supervised=True, text=text1, spacy_doc=doc1)
 
 import wit.witness
-import wit.backend
+import wit.police

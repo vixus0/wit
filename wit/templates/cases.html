@@ -1,0 +1,9 @@
+{% include "head.html" %}
+<main>
+<ul class="cases grid tall">
+  {% for case in cases: %}
+  <li><a href="{{ url_for('case', id=case.id) }}">{{ case.name }}</a></li>
+  {% endfor %}
+  <li><a href="{{ url_for('new_case') }}" class="new">New Case</a></li>
+</ul>
+</main>

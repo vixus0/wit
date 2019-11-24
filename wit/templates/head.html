@@ -1,9 +1,15 @@
 {% include "pre.html" %}
 <ul id="breadcrumbs">
   <a href="/" class="logo">Wit</a>
+  {% if crumbs %}
+  {% for text, url in crumbs: %}
+  <li><a href="{{url}}">{{text.title()}}</a></li>
+  {% endfor %}
+  {% else %}
   {% for el in request.path.split('/')[1:] %}
   {% if el != '' %}
   <li>{{ el.replace('-', ' ').title() }}</li>
   {% endif %}
   {% endfor %}
+  {% endif %}
 </ul>

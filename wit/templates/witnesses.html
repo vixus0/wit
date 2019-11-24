@@ -1,0 +1,13 @@
+{% include "head.html" %}
+<main>
+  <ul class="grid mini">
+    <li><a href="{{ url_for('case', id=case.id) }}">🌐 Graph</a></li>
+    <li><a href="{{ url_for('witnesses', case_id=case.id) }}" class="selected">👀 Witnesses</a></li>
+    <li><a href="">💬 Statements</a></li>
+    <li><a href="">📋 Notes</a></li>
+  </ul>
+
+  {% for witness in witnesses: %}
+  {{ witness.name }}
+  {% endfor %}
+</main>
