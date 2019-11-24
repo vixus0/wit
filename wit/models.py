@@ -29,23 +29,32 @@ class BaseModel(Model):
 #
 # Case -> Witness -> Code -> Statement
 #
-class User(Model):
+class User(BaseModel):
     username = CharField()
     password = CharField()
 
-class Case(Model):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.is_authenticated = False
+        self.is_active = False
+        self.is_anonymous = False
+
+    def get_id(self):
+        return self.id
+
+class Case(BaseModel):
     opened = DateTimeField(default=datetime.now)
     closed = DateTimeField(null=True)
     name = CharField(index=True)
-    created_by = ForeignKeyField(User, backref='cases')
 
 class Witness(BaseModel):
     case = ForeignKeyField(Case, backref='witnesses')
     name = CharField(index=True)
-    birthdate = DateField()
-    address = TextField()
-    mobile = CharField()
-    email = CharField()
+    birthdate = DateField(null=True)
+    address = TextField(null=True)
+    postcode = CharField(null=True)
+    mobile = CharField(null=True)
+    email = CharField(null=True)
 
 class Code(BaseModel):
     witness = ForeignKeyField(Witness, backref='codes')
