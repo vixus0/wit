@@ -1,5 +1,10 @@
+import inspect
 import sys
 import spacy
+
+from pprint import PrettyPrinter
+
+pp = PrettyPrinter(indent=2)
 
 def textify(token):
     if token is None:
@@ -25,12 +30,12 @@ def distill_text(input_text, debug=False):
             print("\n")
             print(sentence)
 
-#        for chunk in doc.noun_chunks:
-#            print(chunk.text, chunk.label_, chunk.root.text, chunk.root.dep_)
-#
-#        print("\n")
-#        for token in doc:
-#            print(token.text, token.head.text, token.dep_, token.pos_)
+        #for chunk in doc.noun_chunks:
+        #    print(chunk.text, chunk.label_, chunk.root.text, chunk.root.dep_)
+
+        #print("\n")
+        #for token in doc:
+        #    print(token.text, token.head.text, token.dep_, token.pos_)
 
         verbs = [token for token in sentence if token.pos_ == "VERB"]
 
@@ -87,14 +92,17 @@ def distill_text(input_text, debug=False):
 
             # Get the (one or more) indirect objects, via the prepositions
             preps = [token for token in verb.rights if token.dep_ in PREPOSITIONS]
+            subj_lefts = ' '.join(str(s) for s in subj.lefts)
+            subj_rights = ' '.join(str(s) for s in subj.rights)
+            subj_full = f'{subj_lefts}{subj_rights}{subj.text}'
             if len(preps) > 0:
                 for prep in preps:
                     pobj = [token for token in prep.rights if len(token.text.split()) > 0]
                     if len(pobj) > 0:
                         pobj = pobj[0]
-                        new_dist.append((subj.text, verb.lemma_, textify(obj), prep.text, pobj.text))
+                        new_dist.append((subj_full, verb.lemma_, textify(obj), prep.text, pobj.text))
             else:
-                new_dist.append((subj.text, verb.lemma_, textify(obj)))
+                new_dist.append((subj_full, verb.lemma_, textify(obj)))
 
 
         # Work out the context (prop noun that is the theme, may be referred to in subsequent sentences)
