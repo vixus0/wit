@@ -276,30 +276,27 @@ form.statement {
 
 form.statement label {
   display: block;
-  background-color: var(--c1);
-  color: var(--c5);
-  padding: 10px;
-  border: none;
-  border-radius: 5px 5px 0 0;
-  font-size: 0.8em;
+  color: var(--c1);
+  font-size: 1em;
 }
 
+textarea#statement,
 form.statement input,
 form.statement select {
   display: block;
-  background-color: #f0f0f0;
   color: var(--c1);
   padding: 10px;
-  border: 2px solid #f0f0f0;
-  border-radius: 0 0 5px 5px;
+  border: 2px solid var(--c3);
   width: 100%;
-  font-size: 1em;
-  margin-bottom: 20px;
+  font-size: 1.2em;
+  margin: 5px 0 30px 0;
+  opacity: 0.6;
 }
 
+textarea#statement:focus,
 form.statement input:focus,
 form.statement select:focus {
-  border: 2px solid #101010;
+  opacity: 1;
 }
 
 form.statement button,
@@ -344,11 +341,11 @@ a.button:link, a.button:active, a.button:visited {
 
 .editable {
   background-color: #f0f0f0;
+  border: 2px solid var(--c3);
   color: var(--c1);
-  border-radius: 5px;
   min-height: 200px;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 10px 20px;
   line-height: 2.5;
 
   word-wrap: break-word;

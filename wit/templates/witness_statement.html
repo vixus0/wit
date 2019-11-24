@@ -11,35 +11,11 @@ Write your witness statement in the box below. Please, use the following guideli
 </ul>
 </p>
 
-<form id="statement_submit" class="statement" method=POST>
-  {% if hints %}
-  <ul class=hints>
-    {% for hint in hints %}
-    <li>You mentioned a <mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em; box-decoration-break: clone; -webkit-box-decoration-break: clone">{{ hint['ent'].text }}<span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; text-transform: uppercase; vertical-align: middle; margin-left: 0.5rem">{{ hint['ent'].label_ }}</span></mark>, would you be able to add {{ hint['prompt'] }}?</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  <label>Statement</label>
-  {% if statement_text %}
-  {{ statement_text.replace('class="entities"', 'id="statement_edit" class="editable entities" contenteditable=true')|safe }}
-  {% else %}
-  <div id="statement_edit" class="editable entities" contenteditable=true>
-  </div>
-  {% endif %}
-  <input type=hidden name="statement" id="statement_text" value="">
-  <button type=submit name=submit value=check>Check</button>
-  <a class=button href="{{ next }}">Confirm</a>
+<p class="guidance">After clicking continue, you will have a change to review your statement before submitting it.</p>
+
+<form class="statement" action="{{ next }}" method=POST>
+  <label for="statement">Statement</label>
+  <textarea id="statement" placeholder="Please enter your statement here" cols=80></textarea>
+  <button type=submit name=submit value=check>Continue</button>
 </form>
-
-<script type=application/javascript>
-  const form = document.getElementById('statement_submit')
-  const edit = document.getElementById('statement_edit')
-  const input = document.getElementById('statement_text')
-
-  form.onsubmit = function submit(event) {
-    var content = edit.textContent.trim();
-    console.log(content);
-    input.value = content;
-  }
-</script>
 </main>
