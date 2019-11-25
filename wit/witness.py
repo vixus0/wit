@@ -12,7 +12,7 @@ def auth():
     return render_template('witness_auth.html', next='/give-statement')
 
 @app.route('/give-statement')
-def statement():
+def give_statement():
     return render_template('witness_start.html', next='/give-statement/personal-info')
 
 @app.route('/give-statement/personal-info')

@@ -1,0 +1,10 @@
+{% include "head.html" %}
+<main>
+  {% include "case_menu.html" %}
+
+  <ul>
+  {% for entity in entities: %}
+  <li><strong>{{ entity.label }}</strong> - {{entity.text}}</li>
+  {% endfor %}
+  </li>
+</main>

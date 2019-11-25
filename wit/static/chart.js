@@ -1,12 +1,19 @@
 graph_path = document.getElementById('graph').getAttribute('data-graph-path')
 d3.json(graph_path).then(function chart(data) {
+  const scale = 500;
+  const stroke_width = 20;
+
   function size(d) {
-    return 5 + Math.log(d.size*2 + 1);
+    const sizes = {
+      "entity": 0.2 * scale,
+      "statement": 0.3 * scale
+    }
+    return sizes[d.type];
   }
 
   function radial(d) {
     const radii = {
-      "entity": 400,
+      "entity": 5 * scale,
       "statement": 0
     }
     return radii[d.type];
@@ -38,12 +45,12 @@ d3.json(graph_path).then(function chart(data) {
   const nodes = data.nodes.map(d => Object.create(d));
 
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id))
+      .force("link", d3.forceLink(links).id(d => d.id).distance(2*scale))
       .force("collide", d3.forceCollide(d => size(d)))
-      .force("charge", d3.forceManyBody(-30))
+      .force("charge", d3.forceManyBody(-130))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("radial", d3.forceRadial(d => radial(d), width/2, height/2))
-      .stop();
+      //.force("radial", d3.forceRadial(d => radial(d), width/2, height/2))
+      //.stop();
 
   const svg_top = d3.select("svg#graph")
       .attr("viewBox", [0, 0, width, height])
@@ -55,7 +62,7 @@ d3.json(graph_path).then(function chart(data) {
          svg.attr("transform", d3.event.transform);
       }));
 
-  for (var i=0; i < 100; i++) simulation.tick();
+  //for (var i=0; i < 100; i++) simulation.tick();
 
   d3.select("text#loading").remove();
 
@@ -67,7 +74,7 @@ d3.json(graph_path).then(function chart(data) {
       .join("line")
       .attr("source-id", d => d.source.id)
       .attr("target-id", d => d.target.id)
-      .attr("stroke-width", 1)
+      .attr("stroke-width", stroke_width)
       .attr("x1", d => d.source.x)
       .attr("y1", d => d.source.y)
       .attr("x2", d => d.target.x)
@@ -93,12 +100,15 @@ d3.json(graph_path).then(function chart(data) {
       .attr("y", 0);
       */
 
-  const node = svg.append("g")
+  const nodelinks = svg.append("g")
       .attr("stroke", "#fff")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 0.5 * stroke_width)
       .selectAll("circle")
       .data(nodes)
-      .join("circle")
+      .join("a")
+      .attr("href", d => d.href);
+
+  const node = nodelinks.append("circle")
       .attr("id", d => d.id)
       .attr("r", d => size(d))
       .attr("fill", d => fill(d))
@@ -111,7 +121,6 @@ d3.json(graph_path).then(function chart(data) {
   node.append("title")
       .text(d => `${d.type}: ${d.label}`);
 
-  /*
   simulation.on("tick", () => {
     link
         .attr("x1", d => d.source.x)
@@ -123,17 +132,19 @@ d3.json(graph_path).then(function chart(data) {
         .attr("cx", d => d.x)
         .attr("cy", d => d.y);
   });
-  */
 
   function highlight(d, node, toggle_attr) {
     if (node.attr("select") !== "clicked") {
       d3.selectAll(`line[source-id="${d.id}"], line[target-id="${d.id}"]`).each(function(d, i) {
         const link = d3.select(this);
         link.attr("select", toggle_attr)
-            .attr("stroke-width", 2)
+            .attr("stroke-width", 2 * stroke_width)
             .attr("stroke-opacity", 1)
             .attr("stroke", d => stroke(d));
-        d3.selectAll(`circle#${link.attr("source-id")}, circle#${link.attr("target-id")}`)
+        d3.selectAll(`circle#${link.attr("source-id")}`)
+          .attr("select", toggle_attr)
+          .attr("stroke", "#808080");
+        d3.selectAll(`circle#${link.attr("target-id")}`)
           .attr("select", toggle_attr)
           .attr("stroke", "#808080");
       });
@@ -144,7 +155,7 @@ d3.json(graph_path).then(function chart(data) {
 
   function unhighlightAll(toggle_attr) {
     d3.selectAll(`line[select="${toggle_attr}"]`)
-      .attr("stroke-width", 1)
+      .attr("stroke-width", 1 * stroke_width)
       .attr("stroke-opacity", 0.6)
       .attr("stroke", "#999");
     d3.selectAll(`circle[select="${toggle_attr}"]`)
@@ -204,8 +215,8 @@ d3.json(graph_path).then(function chart(data) {
   }
 
   // Search
-  const search = document.getElementById("search");
-  search.addEventListener("change", searchChange);
+  //const search = document.getElementById("search");
+  //search.addEventListener("change", searchChange);
 
   function searchChange(e) {
     const text = e.srcElement.value.trim();

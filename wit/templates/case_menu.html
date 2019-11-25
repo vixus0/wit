@@ -1,0 +1,6 @@
+<ul class="grid mini">
+  <li><a href="{{ url_for('case', id=case.id) }}" class="{{ 'selected' if selected=='graph' }}">🌐 Graph</a></li>
+  <li><a href="{{ url_for('witnesses', case_id=case.id) }}" class="{{ 'selected' if selected=='witnesses' }}">👀 Witnesses</a></li>
+  <li><a href="{{ url_for('statements', case_id=case.id) }}" class="{{ 'selected' if selected=='statements' }}">💬 Statements</a></li>
+  <li><a href="{{ url_for('entities', case_id=case.id) }}" class="{{ 'selected' if selected=='entities' }}">👥 Entities</a></li>
+</ul>

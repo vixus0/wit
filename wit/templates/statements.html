@@ -1,0 +1,10 @@
+{% include "head.html" %}
+<main>
+  {% include "case_menu.html" %}
+
+  <ul>
+  {% for statement in statements: %}
+  <li><a href="{{ url_for('statement', case_id=case.id, id=statement.id) }}">{{ statement.id }}</a> - submitted by <a href="{{ url_for('witness', case_id=case.id, id=statement.code.witness.id) }}">{{ statement.code.witness.name }}</a> on {{ statement.submitted }}</li>
+  {% endfor %}
+  </ul>
+</main>

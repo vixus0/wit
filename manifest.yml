@@ -1,0 +1,6 @@
+---
+applications:
+  - name: wit-demo
+    buildpacks:
+      - python_buildpack
+    command: env FLASK_APP=wit FLASK_ENV=development flask run
