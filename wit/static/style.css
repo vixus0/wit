@@ -24,6 +24,10 @@ main {
   display: block;
 }
 
+main p {
+  padding: 10px;
+}
+
 h1, h2 {
   display: block;
   border-bottom: 2px solid var(--c4);
@@ -370,17 +374,8 @@ ul.grid.tall {
 }
 
 ul.grid.mini {
-  text-transform: uppercase;
   font-size: 0.8em;
   grid-gap: 2px;
-}
-
-ul.grid.mini li:first-child a {
-  border-radius: 8px 0 0 8px;
-}
-
-ul.grid.mini li:last-child a {
-  border-radius: 0 8px 8px 0;
 }
 
 ul.grid li {
@@ -421,4 +416,9 @@ ul.grid a.selected {
 
 .cases a:before {
   content: '📁 ';
+}
+
+svg#graph {
+  width: 100%;
+  height: 80%;
 }

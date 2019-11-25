@@ -64,7 +64,17 @@ class Code(BaseModel):
 
 class Statement(BaseModel):
     code = ForeignKeyField(Code, backref='statements')
+    case = ForeignKeyField(Case, backref='statements')
     submitted = DateTimeField(default=datetime.now, index=True)
     text = TextField()
     spacy_doc = BlobField()
     supervised = BooleanField()
+
+class Entity(BaseModel):
+    id = CharField(primary_key=True)
+    label = CharField()
+    text = CharField()
+
+class EntityStatement(BaseModel):
+    entity = ForeignKeyField(Entity)
+    statement = ForeignKeyField(Statement)

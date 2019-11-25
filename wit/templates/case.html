@@ -1,4 +1,6 @@
 {% include "head.html" %}
+<script type=text/javascript src="{{ url_for('static', filename='d3.v5.min.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='chart.js') }}" defer></script>
 <main>
   <ul class="grid mini">
     <li><a href="{{ url_for('case', id=case.id) }}" class="selected">🌐 Graph</a></li>
@@ -6,4 +8,7 @@
     <li><a href="">💬 Statements</a></li>
     <li><a href="">📋 Notes</a></li>
   </ul>
+  <svg id=graph data-graph-path="/cases/{{ case.id }}/graph">
+    <text x="45%" y="50%" font-size="40px" fill="#d8dee9" id="loading">Loading...</text>
+  </svg>
 </main>
