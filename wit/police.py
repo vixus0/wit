@@ -8,6 +8,7 @@ from spacy.tokens import Doc
 from peewee import JOIN
 
 from wit import app, db
+from wit.nlp import process_text
 from wit.models import Case, Code, Witness, Entity, Statement, EntityStatement
 
 @app.errorhandler(Case.DoesNotExist)
@@ -103,7 +104,7 @@ def graph(id):
 def statement(case_id, id):
     case = Case.get_by_id(case_id)
     statement = Statement.get_by_id(id)
-    doc = Doc(spacy.blank("en").vocab).from_bytes(statement.spacy_doc)
+    doc = process_text(statement.text)
     spacy_html = displacy.render(doc, style='ent', minify=True)
     crumbs = [
             ('cases', url_for('cases')),

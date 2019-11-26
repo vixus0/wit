@@ -47,7 +47,7 @@ def nlp():
         return render_template('witness_statement.html', statement_text=_spacy_html, hints=_hints, next='/give-statement/advokate')
     return render_template('witness_statement.html', next='/give-statement/advokate')
 
-@app.route('/give-statement/advokate')
+@app.route('/give-statement/advokate', methods=['GET','POST'])
 def advokate():
     return render_template('witness_advokate.html', next='/give-statement/summary')
 

@@ -3,4 +3,9 @@ applications:
   - name: wit-demo
     buildpacks:
       - python_buildpack
-    command: env FLASK_APP=wit FLASK_ENV=development flask run
+    command: python test_data.py && env FLASK_RUN_PORT=$PORT flask run
+    health-check-type: process
+    env:
+      FLASK_APP: wit
+      FLASK_ENV: development
+      FLASK_RUN_HOST: "0.0.0.0"
